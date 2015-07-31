@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION_pillow=${VERSION_pillow:-1.9.0}
+VERSION_pillow=${VERSION_pillow:-2.9.0}
 URL_pillow=https://pypi.python.org/packages/source/P/Pillow/Pillow-$VERSION_pillow.tar.gz
 DEPS_pillow=(png jpeg python)
 MD5_pillow=46f1729ece27981d54ec543ad5b37d14
@@ -41,7 +41,8 @@ function build_pillow() {
 	cd $BUILD_pillow
 
 	push_arm
-
+        echo $SRC_PATH/obj/local/$ARCH
+        ls $SRC_PATH/obj/local/$ARCH
 	LIBS="$SRC_PATH/obj/local/$ARCH"
 	export CFLAGS="$CFLAGS -I$JNI_PATH/png -I$JNI_PATH/jpeg -I$JNI_PATH/freetype/include/freetype"
 	export LDFLAGS="$LDFLAGS -L$LIBS -lm -lz"
